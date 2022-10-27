@@ -1,4 +1,5 @@
 from rdkit import Chem
+from rdkit.Chem import AllChem
 from rdkit.Chem.AllChem import ChemicalReaction
 
 from .smiles import canonicalise

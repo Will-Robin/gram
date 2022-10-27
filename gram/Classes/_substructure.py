@@ -1,4 +1,4 @@
-from gram.chemoinformatics import smarts
+from gram.chemoinformatics.core import smarts
 
 
 class Substructure:
