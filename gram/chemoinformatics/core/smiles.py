@@ -3,6 +3,14 @@ from rdkit.Chem import AllChem
 from rdkit.Chem.rdchem import Mol
 
 
+def mol_from_smiles(smiles: str) -> Mol:
+    """ """
+
+    mol = Chem.MolFromSmiles(smiles)
+
+    return mol
+
+
 def canonicalise(smiles: str) -> str:
     """
     Parameters

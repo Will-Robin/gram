@@ -1,5 +1,5 @@
+from gram.chemoinformatics.core.smiles import Mol
 from gram.chemoinformatics.smiles import mol_from_smiles
-from gram.chemoinformatics.smiles import Mol
 
 
 class Compound:

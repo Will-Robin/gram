@@ -1,12 +1,8 @@
-from rdkit import Chem
-from rdkit.Chem.rdchem import Mol as Mol
+from .core import smiles as core_sm
 
 
-def mol_from_smiles(smiles: str) -> Mol:
+def mol_from_smiles(smiles: str) -> core_sm.Mol:
     """
-    Create
     """
 
-    mol = Chem.MolFromSmiles(smiles)
-
-    return mol
+    return core_sm.mol_from_smiles(smiles)
