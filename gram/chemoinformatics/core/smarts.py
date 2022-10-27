@@ -1,6 +1,7 @@
 from rdkit import Chem
 from rdkit.Chem.rdchem import Mol
 
+
 def mol_from_smarts(smarts: str) -> Mol:
     """ """
 

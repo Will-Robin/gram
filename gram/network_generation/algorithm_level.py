@@ -6,7 +6,7 @@ from gram.Classes import Substructure
 from gram.Classes import ReactionTemplate
 from gram.chemoinformatics.run_reaction import run_reaction
 
-from .inspect import get_reactive_compounds
+from .filters import get_reactive_compounds
 from .inspect import check_reaction_input
 
 
