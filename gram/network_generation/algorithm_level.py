@@ -9,7 +9,7 @@ from .filters import get_reactive_compounds
 from .inspect import check_reaction_input
 
 
-def extend_network_specific(
+def apply_specific_reaction_to_network(
     network: Network, reagents: list[Compound], reaction_template: ReactionTemplate
 ) -> None:
     """
@@ -46,43 +46,9 @@ def extend_network_specific(
             pass
 
 
-def extend_network_self(network: Network, reaction_template: ReactionTemplate) -> None:
-    """
-    Extend the network using any members of the network which can interact
-    according to the reaction template provided.
-
-    Parameters
-    ----------
-    network: Classes.Network
-        Network to be extrapolated from. Modified in place.
-    reagents: list[Classes.Compound]
-        Reagents to be applied to the network.
-    reaction_template: Classes.Reaction_Template
-        Reaction template to be used on the network.
-    secondary_substructure: Classes.Substructure
-        Substructure of the second reaction component.
-
-    Returns
-    -------
-    None
-    """
-    compounds_in_network = list(network.compounds.values())
-
-    rxn_substructs = reaction_template.reactant_substructures
-
-    reactants1 = get_reactive_compounds(compounds_in_network, [rxn_substructs[0]])
-
-    reactants2 = get_reactive_compounds(compounds_in_network, [rxn_substructs[1]])
-
-    for reactant_1 in reactants1:
-        for reactant_2 in reactants2:
-
-            insert = [reactant_1] + [reactant_2]
-            resulting_reactions = run_reaction(insert, reaction_template)
-            network.add_reactions(resulting_reactions)
-
-
-def extend_network_task(network: Network, reaction_template: ReactionTemplate) -> None:
+def apply_reaction_to_network(
+    network: Network, reaction_template: ReactionTemplate
+) -> None:
     """
     Extend the network using any members of the network which can interact
     according to the reaction template provided.

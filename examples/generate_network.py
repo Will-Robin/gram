@@ -32,10 +32,10 @@ def generate_epimers(network, deprotonation_rules=[], protonation_rules=[]):
     reaction_number = len(network.reactions)
     while i < 0:
         for d_rule in deprotonation_rules:
-            n_gen.extend_network_specific(network, [hydroxide], d_rule)
+            n_gen.apply_specific_reaction_to_network(network, [hydroxide], d_rule)
 
         for p_rule in protonation_rules:
-            n_gen.extend_network_specific(network, [water], p_rule)
+            n_gen.apply_specific_reaction_to_network(network, [water], p_rule)
 
         new_reaction_number = len(network.reactions)
 
@@ -83,7 +83,7 @@ protonation_rules = [x for x in reaction_pattern if "protonation" in x]
 x = 0
 while x < iterations:
     for task in reaction_pattern:
-        n_gen.extend_network_task(reaction_network, reactions[task])
+        n_gen.apply_reaction_to_network(reaction_network, reactions[task])
 
     generate_epimers(
         reaction_network,
