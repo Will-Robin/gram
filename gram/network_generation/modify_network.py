@@ -3,9 +3,9 @@ from gram.Classes import InputProcess
 from gram.Classes import OutputProcess
 
 
-def add_flow_inputs(network: Network, inputs: list[str]) -> None:
+def add_flow_terms(network: Network, inputs: list[str]) -> None:
     """
-    Add flow inputs into network.
+    Add flow inputs and outputs into network.
 
     Parameters
     ----------
