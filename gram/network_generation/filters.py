@@ -8,6 +8,8 @@ from gram.Classes import Reaction
 from gram.Classes import Compound
 from gram.Classes import Substructure
 
+from gram.chemoinformatics import substructure_match as substr
+
 
 def get_reactive_compounds(
     species_list: list[Compound], substructures: list[Substructure]
@@ -33,7 +35,7 @@ def get_reactive_compounds(
     # testing each molecule in the list of species for reaction group matches
     for mol in species_list:
         for substructure in substructures:
-            if mol.mol.HasSubstructMatch(substructure.mol):
+            if substr.has_substructure_match(mol, substructure):
                 matches.append(mol)
     return matches
 
@@ -65,7 +67,9 @@ def remove_invalid_reactions(
 
             products = reaction.reaction.GetProducts()
 
-            substruct_matches = [p.HasSubstructMatch(exc.mol) for p in products]
+            substruct_matches = [
+                substr.has_substructure_match(p, exc) for p in products
+            ]
 
             if any(substruct_matches):
                 tag = False
@@ -103,9 +107,9 @@ def remove_reactions_by_product_substruct(network: Network, substruct: Substruct
         products = reaction_object.products
 
         for product in products:
-            mol = network.compounds[product].mol
+            mol = network.compounds[product]
 
-            if mol.HasSubstructMatch(substruct.mol):
+            if substr.has_substructure_match(mol, substruct):
                 remove_reactions.append(reaction)
 
     network.remove_reactions(remove_reactions)

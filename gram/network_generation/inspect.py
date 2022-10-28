@@ -6,6 +6,8 @@ from gram.Classes import Compound
 from gram.Classes import Substructure
 from gram.Classes import ReactionRule
 
+from gram.chemoinformatics import substructure_match as substr
+
 
 def check_reaction_input(
     reactant_list: list[Compound], reactive_substructs: list[Substructure]
@@ -31,7 +33,8 @@ def check_reaction_input(
     """
 
     test_list = [
-        r.mol.HasSubstructMatch(s) for r, s in zip(reactant_list, reactive_substructs)
+        substr.has_substructure_match(r, s)
+        for r, s in zip(reactant_list, reactive_substructs)
     ]
 
     return all(test_list)

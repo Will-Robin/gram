@@ -11,11 +11,11 @@ def has_substructure_match(molecule: Mol, substructure: Mol) -> bool:
     return result
 
 
-def get_substructure_matches(molecule: Mol, substructure: Mol) -> list[Mol]:
+def get_substructure_matches(molecule: Mol, substructure: Mol) -> tuple[tuple[int]]:
     """
     Get substructure matches for a molecule.
     """
 
-    matches: list[Mol] = molecule.GetSubstructMatches(substructure)
+    matches: tuple[tuple[int]] = molecule.GetSubstructMatches(substructure)
 
     return matches
