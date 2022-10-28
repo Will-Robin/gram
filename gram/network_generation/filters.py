@@ -40,76 +40,35 @@ def get_reactive_compounds(
     return matches
 
 
-def remove_invalid_reactions(
-    reactions: list[Reaction], invalid_substructures: list[Substructure]
-):
+def find_invalid_reactions(
+    reactions: list[Reaction], substructure: Substructure, network: Network
+) -> list[Reaction]:
     """
-    Removes reactions with products that contain invalid substructures.
+    Finds reactions with products that contain invalid substructures.
 
     Parameters
     ----------
     reactions: list[Reaction]
         List of Reactions
-    invalid_substructures: list[Substructure]
+    substructure: Substructure
         list of invalid Substructures.
+    network: Network
+        Network containing reaction data.
 
     Returns
     -------
     reactions: list[Reaction]
-        list of reactions with those that produce
-        invalid substructures removed.
+        list of reactions that produce invalid substructures.
     """
 
-    sortlist = []
+    invalid_reactions = []
+
     for reaction in reactions:
-        tag = True
-        for exc in invalid_substructures:
 
-            products = reaction.reaction.GetProducts()
-
-            substruct_matches = [
-                substr.has_substructure_match(p, exc) for p in products
-            ]
-
-            if any(substruct_matches):
-                tag = False
-
-        sortlist.append(tag)
-
-    # new list with compounds tagged as false removed
-    reactions = list(compress(reactions, sortlist))
-
-    return reactions
-
-
-def remove_reactions_by_product_substruct(network: Network, substruct: Substructure):
-    """
-    Remove the reactions in a nework if any of their products contain a defined
-    substructure.
-
-    Parameters
-    ----------
-    network: Network
-        Network to check and modify.
-    substruct: Substructure
-        Substructure to check for in products.
-
-    Returns
-    -------
-    None
-    """
-
-    remove_reactions = []
-
-    for reaction in network.reactions:
-
-        reaction_object = network.reactions[reaction]
-        products = reaction_object.products
+        products = [network.compounds[x] for x in reaction.products]
 
         for product in products:
-            mol = network.compounds[product]
+            if substr.has_substructure_match(product, substructure):
+                invalid_reactions.append(reaction)
 
-            if substr.has_substructure_match(mol, substruct):
-                remove_reactions.append(reaction)
-
-    network.remove_reactions(remove_reactions)
+    return invalid_reactions

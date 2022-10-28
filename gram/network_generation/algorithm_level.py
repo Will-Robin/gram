@@ -22,7 +22,7 @@ def apply_specific_reaction_to_network(
     ----------
     network: Network
         Network to be extrapolated from. Modified in place.
-    reagents: list[ Compound]
+    reagents: list[Compound]
         Reagents to be applied to the network.
     reaction_rule: ReactionRule
         Reaction rule to be used on the network.
