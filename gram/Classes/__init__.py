@@ -1,6 +1,5 @@
 """
-Classes which encapsulate chemical, experiment and model information for
-chemical reaction networks.
+Fundamental types manipulated by this package.
 """
 
 from ._network import Network
@@ -10,5 +9,5 @@ from ._inputProcess import InputProcess
 from ._output import Output
 from ._outputProcess import OutputProcess
 from ._reaction import Reaction
-from ._reactionTemplate import ReactionTemplate
+from ._reactionRule import ReactionRule
 from ._substructure import Substructure

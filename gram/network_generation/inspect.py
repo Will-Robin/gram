@@ -1,7 +1,10 @@
+"""
+These functions check if criteria are met for a reaction.
+"""
 from gram.Classes import Network
 from gram.Classes import Compound
 from gram.Classes import Substructure
-from gram.Classes import ReactionTemplate
+from gram.Classes import ReactionRule
 
 
 def check_reaction_input(
@@ -18,7 +21,7 @@ def check_reaction_input(
     ----------
     reactant_list: Compound
 
-    reaction_template: ReactionTemplate
+    reaction_rule: ReactionRule
 
     Returns
     -------
@@ -35,17 +38,17 @@ def check_reaction_input(
 
 
 def check_reaction_occurence(
-    compound: Compound, network: Network, reaction_template: ReactionTemplate
+    compound: Compound, network: Network, reaction_rule: ReactionRule
 ) -> bool:
     """
-    Check if a reaction template has already been applied to a compound in a
+    Check if a reaction rule has already been applied to a compound in a
     reaction network.
 
     Parameters
     ----------
     compound: Compound
     network: Network
-    reaction_template: ReactionTemplate
+    reaction_rule: ReactionRule
 
     Returns
     -------
@@ -54,11 +57,11 @@ def check_reaction_occurence(
     """
 
     # Reaction to check for
-    reaction_name = reaction_template.name
+    reaction_name = reaction_rule.name
 
     # Get the tokens of reactions in which the compound is a reactant
     used_reactions = compound.reactant_in
-    # Get the names of the reaction templates for each reaction
+    # Get the names of the reaction rules for each reaction
     used_classes = [network.get_reaction_name(r) for r in used_reactions]
 
     return reaction_name in used_classes

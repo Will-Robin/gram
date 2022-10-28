@@ -6,7 +6,7 @@ from .smiles import incorrect_chiral_H_solve
 
 
 def run_rdkit_reaction(
-    reactant_compounds: list[Mol], reaction_template: AllChem.ChemicalReaction
+    reactant_compounds: list[Mol], reaction_rule: AllChem.ChemicalReaction
 ) -> list[str]:
     """
     Performs a chemical reaction.
@@ -22,7 +22,7 @@ def run_rdkit_reaction(
     ----------
     reactant_compounds: list[Mol]
         tuple of molecules which take part in the reaction.
-    reaction_template: list[reaction]
+    reaction_rule: list[reaction]
 
     Returns
     -------
@@ -33,7 +33,7 @@ def run_rdkit_reaction(
     reactions = []
 
     # Run the reaction to give a list of products sets
-    product_sets = reaction_template.RunReactants(reactant_compounds)
+    product_sets = reaction_rule.RunReactants(reactant_compounds)
 
     for product_set in product_sets:
         for product in product_set:

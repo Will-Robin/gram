@@ -1,5 +1,5 @@
 """
-Functions for network generation.
+Reaction network generation functionality.
 """
 
 from .filters import *

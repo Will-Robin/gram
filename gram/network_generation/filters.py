@@ -1,3 +1,6 @@
+"""
+Filters are used to determine if a reaction process can occur.
+"""
 from itertools import compress
 
 from gram.Classes import Network

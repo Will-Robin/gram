@@ -16,9 +16,9 @@ def generate_epimers(network, deprotonation_rules=[], protonation_rules=[]):
     ----------
     network: gram.Network
 
-    deprotonation_rules: list[gram.reaction_template]
+    deprotonation_rules: list[gram.reaction_rule]
 
-    protonation_rules: list[gram.reaction_template]
+    protonation_rules: list[gram.reaction_rule]
 
     Returns
     -------
@@ -53,7 +53,7 @@ info = yaml.load(text, Loader=yaml.FullLoader)
 """Get reaction components"""
 reaction_SMARTS_file = info["reaction-smarts-file"]
 
-reactions = Loading.load_reaction_templates_from_file(reaction_SMARTS_file)
+reactions = Loading.load_reaction_rules_from_file(reaction_SMARTS_file)
 
 C_patt = Substructure("[C]")
 count_carbons = lambda x: x.GetSubstructMatches(C_patt.mol)
@@ -121,7 +121,7 @@ header = [
 reaction_text = "\t".join(header) + "\n"
 for reaction in reaction_network.reactions:
     rxn = reaction_network.reactions[reaction]
-    rule = rxn.reaction_template
+    rule = rxn.reaction_rule
     reaction_text += reaction + "\t"
     reaction_text += rule.name + "\t"
 

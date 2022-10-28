@@ -396,7 +396,7 @@ class Network:
 
     def get_reaction_template(self, reaction: str):
         """
-        Conveniently get the ReactionTemplate of a reaction
+        Conveniently get the ReactionRule of a reaction
 
         Parameters
         ----------

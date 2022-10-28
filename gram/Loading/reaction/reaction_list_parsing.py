@@ -1,14 +1,14 @@
 """
 For loading reaction information fron text files.
 """
-from gram.Classes import ReactionTemplate
+from gram.Classes import ReactionRule
 
 
-def load_reaction_templates_from_file(
+def load_reaction_rules_from_file(
     fname: str, delimiter: str = "\t"
-) -> dict[str, ReactionTemplate]:
+) -> dict[str, ReactionRule]:
     """
-    Reads reaction templates from a .csv file.
+    Reads reaction rules from a .csv file.
 
     Assumed that the file is structure as follows:
     header\n
@@ -20,15 +20,15 @@ def load_reaction_templates_from_file(
     Parameters
     ----------
     fname: str
-        file containing reaction templates and substructures.
+        file containing reaction rules and substructures.
     delimiter: str or pathlib Path
         Column delimiter for the file
 
     Returns
     -------
-    reaction_templates: dict
-        Dictionary of reaction templates.
-        {reaction class name: ReactionTemplate}
+    reaction_rules: dict
+        Dictionary of reaction rules.
+        {reaction class name: ReactionRule}
     """
 
     lines = []
@@ -36,13 +36,13 @@ def load_reaction_templates_from_file(
         for c, line in enumerate(file):
             lines = file.readlines()
 
-    reaction_templates = {}
+    reaction_rules = {}
     for c, line in enumerate(lines):
         if c == 0:
             pass
         else:
             ins = line.strip("\n").split(delimiter)
-            reaction_templates[ins[0]] = ReactionTemplate(
+            reaction_rules[ins[0]] = ReactionRule(
                 ins[0], ins[3], ins[1].split("."), ins[2].split(".")
             )
-    return reaction_templates
+    return reaction_rules

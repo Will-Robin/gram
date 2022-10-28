@@ -3,7 +3,7 @@ from gram.chemoinformatics.core import reaction_smiles
 from gram.chemoinformatics.core.reaction_smiles import reaction_smiles_split
 from gram.chemoinformatics.core.reaction_smiles import canonicalise_reaction_smiles
 
-from ._reactionTemplate import ReactionTemplate
+from ._reactionRule import ReactionRule
 
 
 class Reaction:
@@ -14,7 +14,7 @@ class Reaction:
     def __init__(
         self,
         rxn_smiles: str,
-        reaction_template=None,
+        reaction_rule=None,
         info: dict[str, str] = dict(),
     ):
         """
@@ -23,8 +23,8 @@ class Reaction:
         rxn_smiles: str
             Reaction object for the reaction. Please provide a valid reaction
             SMILES string with canonicalised SMILES reactants and products.
-        reaction_template: ReactionTemplate object
-            Reaction template which created the reaction.
+        reaction_rule: ReactionRule object
+            Reaction rule which created the reaction.
         info: dict
             Dictionary of information (e.g. database entries)
 
@@ -32,8 +32,8 @@ class Reaction:
         ----------
         reaction_smiles: str
             Reaction SMILES string
-        reaction_template: ReactionTemplate or None
-            Reaction template for the reaction. Defaults to None
+        reaction_rule: ReactionRule or None
+            Reaction rule for the reaction. Defaults to None
         data: dict
             Dictionary of information (e.g. database entries)
         reactants: list[str]
@@ -47,10 +47,10 @@ class Reaction:
         self.reaction_smiles = canonical_rxn_smiles
         self.reaction = reaction_from_smiles(rxn_smiles)
 
-        if reaction_template is None:
-            self.reaction_template = ReactionTemplate("none", "", [], [])
+        if reaction_rule is None:
+            self.reaction_rule = ReactionRule("none", "", [], [])
         else:
-            self.reaction_template = reaction_template
+            self.reaction_rule = reaction_rule
 
         self.data = info
 

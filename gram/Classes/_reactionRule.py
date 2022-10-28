@@ -2,9 +2,9 @@ from ._substructure import Substructure
 from gram.chemoinformatics import reaction_smarts
 
 
-class ReactionTemplate:
+class ReactionRule:
     """
-    Class for reaction templates.
+    Class for reaction rules.
     """
 
     def __init__(
