@@ -1,5 +1,5 @@
+from .core import smiles as sm
 from .core import reaction_smiles as r_sm
-
 
 def reaction_from_smiles(reaction_smiles: str) -> r_sm.ChemicalReaction:
     """
@@ -24,3 +24,52 @@ def reaction_to_smiles(reaction: r_sm.ChemicalReaction) -> str:
     """ """
 
     return r_sm.reaction_to_smiles(reaction)
+
+
+def split_reaction_smiles(reaction_smiles: str) -> tuple[list[str], list[str]]:
+    """
+    Parameters
+    ----------
+    reaction_smiles: str
+
+
+    Returns
+    -------
+    reactants, products: tuple(list[str])
+    """
+
+    split_rxn = reaction_smiles.split(">>")
+
+    reactants = split_rxn[0].split(".")
+    products = split_rxn[1].split(".")
+
+    reactants.sort()
+    products.sort()
+
+    return reactants, products
+
+
+def canonicalise_reaction_smiles(reaction_smiles: str) -> str:
+    """
+    Canonicalise the consituent SMILES of a reaction SMILES string.
+
+    Parameters
+    ----------
+    reaction_smiles: str
+
+    Returns
+    -------
+    canonicalised_rxn_smiles: str
+    """
+
+    reactants, products = split_reaction_smiles(reaction_smiles)
+
+    canonical_reacts = [sm.canonicalise(r) for r in reactants]
+    canonical_prods = [sm.canonicalise(p) for p in products]
+
+    lhs = ".".join(canonical_reacts)
+    rhs = ".".join(canonical_prods)
+
+    canonicalised_rxn_smiles = f"{lhs}>>{rhs}"
+
+    return canonicalised_rxn_smiles

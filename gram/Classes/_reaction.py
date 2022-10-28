@@ -1,7 +1,6 @@
 from gram.chemoinformatics.reaction_smiles import reaction_from_smiles
-from gram.chemoinformatics.core import reaction_smiles
-from gram.chemoinformatics.core.reaction_smiles import reaction_smiles_split
-from gram.chemoinformatics.core.reaction_smiles import canonicalise_reaction_smiles
+from gram.chemoinformatics.reaction_smiles import split_reaction_smiles
+from gram.chemoinformatics.reaction_smiles import canonicalise_reaction_smiles
 
 from ._reactionRule import ReactionRule
 
@@ -54,4 +53,4 @@ class Reaction:
 
         self.data = info
 
-        self.reactants, self.products = reaction_smiles_split(canonical_rxn_smiles)
+        self.reactants, self.products = split_reaction_smiles(canonical_rxn_smiles)

@@ -1,4 +1,4 @@
-from gram.chemoinformatics.core.smiles import Mol
+from gram.chemoinformatics.core import smiles as sm
 from gram.chemoinformatics.smiles import mol_from_smiles
 
 
@@ -16,7 +16,7 @@ class Compound:
 
         Attributes
         ----------
-        mol: smiles.Mol
+        mol: sm.Mol
             RDKit representation of the compound to allow for chemoinformatics
             operations.
         product_of: list[str]
@@ -29,7 +29,7 @@ class Compound:
         """
 
         self.smiles: str = smiles
-        self.mol: Mol = mol_from_smiles(smiles)
+        self.mol: sm.Mol = mol_from_smiles(smiles)
         self.product_of: list[str] = []
         self.reactant_in: list[str] = []
         self.reactive_substructures: list[str] = []
