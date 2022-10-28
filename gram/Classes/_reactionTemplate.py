@@ -1,3 +1,4 @@
+from ._substructure import Substructure
 from gram.chemoinformatics import reaction_smarts
 
 
@@ -30,8 +31,8 @@ class ReactionTemplate:
         name: str
         reaction: rdkit.Chem.AllChem.ChemicalReaction
         reaction_smarts: str
-        reactant_substructures: list[str]
-        product_substructures: list[str]
+        reactant_substructures: list[Substructure]
+        product_substructures: list[Substructure]
         """
 
         self.name = name
@@ -42,5 +43,5 @@ class ReactionTemplate:
             self.reaction = None
             self.reaction_smarts = ""
 
-        self.reactant_substructures = reactant_substructs
-        self.product_substructures = product_substructs
+        self.reactant_substructures = [Substructure(r) for r in reactant_substructs]
+        self.product_substructures = [Substructure(p) for p in product_substructs]

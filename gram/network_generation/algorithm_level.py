@@ -2,7 +2,6 @@ import itertools
 
 from gram.Classes import Network
 from gram.Classes import Compound
-from gram.Classes import Substructure
 from gram.Classes import ReactionTemplate
 from gram.chemoinformatics.run_reaction import run_reaction
 
@@ -30,17 +29,15 @@ def extend_network_specific(
     None
     """
 
-    template_substructures = reaction_template.reactant_substructures
+    rxn_substructs = reaction_template.reactant_substructures
     compounds_in_network = list(network.compounds.values())
 
-    reactive_substrs = [Substructure(x) for x in template_substructures]
-
-    reactants = get_reactive_compounds(compounds_in_network, reactive_substrs)
+    reactants = get_reactive_compounds(compounds_in_network, rxn_substructs)
 
     for reactant in reactants:
         insert = [reactant] + reagents
 
-        input_valid = check_reaction_input(insert, reactive_substrs)
+        input_valid = check_reaction_input(insert, rxn_substructs)
 
         if input_valid:
             resulting_reactions = run_reaction(insert, reaction_template)
@@ -71,11 +68,11 @@ def extend_network_self(network: Network, reaction_template: ReactionTemplate) -
     """
     compounds_in_network = list(network.compounds.values())
 
-    substructures = [Substructure(x) for x in reaction_template.reactant_substructures]
+    rxn_substructs = reaction_template.reactant_substructures
 
-    reactants1 = get_reactive_compounds(compounds_in_network, [substructures[0]])
+    reactants1 = get_reactive_compounds(compounds_in_network, [rxn_substructs[0]])
 
-    reactants2 = get_reactive_compounds(compounds_in_network, [substructures[1]])
+    reactants2 = get_reactive_compounds(compounds_in_network, [rxn_substructs[1]])
 
     for reactant_1 in reactants1:
         for reactant_2 in reactants2:
@@ -109,8 +106,7 @@ def extend_network_task(network: Network, reaction_template: ReactionTemplate) -
     current_compounds = list(network.compounds.values())
     reactants = []
     for substruct in reaction_template.reactant_substructures:
-        substructure = Substructure(substruct)
-        matches = get_reactive_compounds(current_compounds, [substructure])
+        matches = get_reactive_compounds(current_compounds, [substruct])
         reactants.append(matches)
 
     # Build reactant combinations
