@@ -16,9 +16,9 @@ def check_reaction_input(
 
     Parameters
     ----------
-    reactant_list: Classes.Compound
+    reactant_list: Compound
 
-    reaction_template: Classes.ReactionTemplate
+    reaction_template: ReactionTemplate
 
     Returns
     -------
@@ -43,9 +43,9 @@ def check_reaction_occurence(
 
     Parameters
     ----------
-    compound: Classes.Compound
-    network: Classes.Network
-    reaction_template: Classes.ReactionTemplate
+    compound: Compound
+    network: Network
+    reaction_template: ReactionTemplate
 
     Returns
     -------

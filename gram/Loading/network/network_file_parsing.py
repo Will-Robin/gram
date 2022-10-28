@@ -16,7 +16,7 @@ def load_network_from_reaction_list(
 
     Returns
     -------
-    network: Classes.Network
+    network: Network
     """
 
     rxns = []

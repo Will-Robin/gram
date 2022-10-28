@@ -15,15 +15,15 @@ def get_reactive_compounds(
 
     Parameters
     ----------
-    species_list: list[Classes.Compound]
+    species_list: list[Compound]
         List of Compound objects from which
         reactive molecules are extracted.
-    substructure: list[Classes.Substructure]
+    substructure: list[ Substructure]
         Reactive substructures.
 
     Returns
     -------
-    matches: list[Classes.Compound]
+    matches: list[Compound]
         List of Compound objects which contain the substructure.
     """
     matches = []
@@ -43,14 +43,14 @@ def remove_invalid_reactions(
 
     Parameters
     ----------
-    reactions: list[Classes.Reaction]
+    reactions: list[Reaction]
         List of Reactions
-    invalid_substructures: list[Classes.Substructure]
+    invalid_substructures: list[Substructure]
         list of invalid Substructures.
 
     Returns
     -------
-    reactions: list[Classes.Reaction]
+    reactions: list[Reaction]
         list of reactions with those that produce
         invalid substructures removed.
     """
@@ -82,9 +82,9 @@ def remove_reactions_by_product_substruct(network: Network, substruct: Substruct
 
     Parameters
     ----------
-    network: Classes.Network
+    network: Network
         Network to check and modify.
-    substruct: Classes.Substructure
+    substruct: Substructure
         Substructure to check for in products.
 
     Returns

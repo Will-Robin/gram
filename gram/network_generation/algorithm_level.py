@@ -17,11 +17,11 @@ def apply_specific_reaction_to_network(
 
     Parameters
     ----------
-    network: Classes.Network
+    network: Network
         Network to be extrapolated from. Modified in place.
-    reagents: list[Classes.Compound]
+    reagents: list[ Compound]
         Reagents to be applied to the network.
-    reaction_template: Classes.ReactionTemplate
+    reaction_template: ReactionTemplate
         Reaction template to be used on the network.
 
     Returns
@@ -55,13 +55,13 @@ def apply_reaction_to_network(
 
     Parameters
     ----------
-    network: Classes.Network
+    network: Network
         Network to be extrapolated from. Modified in place.
     reagents: list[Compound]
         Reagents to be applied to the network.
-    reaction_template: Classes.Reaction_Template
+    reaction_template: Reaction_Template
         Reaction template to be used on the network.
-    secondary_substructure: Classes.Substructure
+    secondary_substructure: Substructure
         Substructure of the second reaction component.
 
     Returns
