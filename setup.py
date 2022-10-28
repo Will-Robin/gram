@@ -5,5 +5,6 @@ setup(
     version="0.0.0",
     author="William E. Robinson",
     packages=["gram"],
-    install_requires=[],
+    install_requires=["rdkit"],
+    extras_require={"dev": ["pdoc", "black", "pylint"]},
 )
