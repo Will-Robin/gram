@@ -8,6 +8,20 @@ The chemoinformatics libraries have been wrapped up into a single submodule so
 that they can be easily replaced. Type annotations in the code will help make
 sure that all of the components fit together correctly.
 
+# Reaction Network Generation
+
+A reaction rule is principally defined by reactive substructures and molecular
+rearrangements.
+
+A reaction generation step runs as follows given (a) compound(s) and a reaction rule:
+
+1. Check if the compounds have any substructures matching those contained in the
+   reaction rule
+
+   if not, pass
+
+2. Apply the reaction rule to the compound
+
 # Installation
 
 1. Clone the repository and navigate into it:
