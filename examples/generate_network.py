@@ -1,24 +1,31 @@
 import yaml
 
-from gram import Loading
 from gram.Classes import Network
 from gram.Classes import Compound
 from gram.Classes import Substructure
+from gram.Classes import ReactionRule
 from gram import network_generation as n_gen
+from gram.chemoinformatics import substructure_match as substr
+
+from loading import load_reaction_rules
 
 
-def generate_epimers(network, deprotonation_rules=[], protonation_rules=[]):
+def generate_epimers(
+    network: Network,
+    deprotonation_rules: list[ReactionRule] = [],
+    protonation_rules: list[ReactionRule] = [],
+) -> None:
     """
     A function to generate all of the epimers of a sugar: over-iterates
     multiple times through a series of protonation/deprotonation reactions.
 
     Parameters
     ----------
-    network: gram.Network
+    network: Network
 
-    deprotonation_rules: list[gram.reaction_rule]
+    deprotonation_rules: list[ReactionRule]
 
-    protonation_rules: list[gram.reaction_rule]
+    protonation_rules: list[ReactionRule]
 
     Returns
     -------
@@ -53,10 +60,10 @@ info = yaml.load(text, Loader=yaml.FullLoader)
 """Get reaction components"""
 reaction_SMARTS_file = info["reaction-smarts-file"]
 
-reactions = Loading.load_reaction_rules_from_file(reaction_SMARTS_file)
+reactions = load_reaction_rules(reaction_SMARTS_file)
 
 C_patt = Substructure("[C]")
-count_carbons = lambda x: x.GetSubstructMatches(C_patt.mol)
+count_carbons = lambda x: substr.get_substructure_matches(x, C_patt)
 
 """Name"""
 network_name = info["network-name"]
@@ -84,7 +91,6 @@ x = 0
 while x < iterations:
     for task in reaction_pattern:
         n_gen.apply_reaction_to_network(reaction_network, reactions[task])
-
     generate_epimers(
         reaction_network,
         deprotonation_rules=[reactions[d] for d in deprotonation_rules],
@@ -98,7 +104,7 @@ while x < iterations:
     remove_compounds = [
         reaction_network.compounds[c]
         for c in reaction_network.compounds
-        if len(count_carbons(reaction_network.compounds[c].mol)) > 6
+        if len(count_carbons(reaction_network.compounds[c])) > 6
     ]
     reaction_network.remove_compounds(remove_compounds)
 
