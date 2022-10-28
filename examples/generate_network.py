@@ -1,8 +1,9 @@
 import yaml
-from rdkit import Chem
 
-from gram import Classes
 from gram import Loading
+from gram.Classes import Network
+from gram.Classes import Compound
+from gram.Classes import Substructure
 from gram import network_generation as n_gen
 
 
@@ -24,8 +25,8 @@ def generate_epimers(network, deprotonation_rules=[], protonation_rules=[]):
     None
     """
 
-    hydroxide = Classes.Compound("[OH-]")
-    water = Classes.Compound("O")
+    hydroxide = Compound("[OH-]")
+    water = Compound("O")
 
     i = 0
     reaction_number = len(network.reactions)
@@ -54,8 +55,8 @@ reaction_SMARTS_file = info["reaction-smarts-file"]
 
 reactions = Loading.load_reaction_templates_from_file(reaction_SMARTS_file)
 
-C_patt = Chem.MolFromSmarts("[C]")
-count_carbons = lambda x: x.GetSubstructMatches(C_patt)
+C_patt = Substructure("[C]")
+count_carbons = lambda x: x.GetSubstructMatches(C_patt.mol)
 
 """Name"""
 network_name = info["network-name"]
@@ -68,8 +69,8 @@ description = info["network-description"]
 iterations = info["iterations"]
 start_smiles = info["initiator-smiles"]
 
-initiator_species = [Classes.Compound(x) for x in start_smiles]
-reaction_network = Classes.Network([], network_name, description)
+initiator_species = [Compound(x) for x in start_smiles]
+reaction_network = Network([], network_name, description)
 
 reaction_network.add_compounds(initiator_species)
 
@@ -125,8 +126,10 @@ for reaction in reaction_network.reactions:
     reaction_text += rule.name + "\t"
 
     reaction_text += rule.reaction_smarts + "\t"
-    reaction_text += ".".join(rule.reactant_substructures) + "\t"
-    reaction_text += ".".join(rule.product_substructures) + "\t"
+    reactant_substrs = [r.smarts for r in rule.reactant_substructures]
+    product_substrs = [p.smarts for p in rule.product_substructures]
+    reaction_text += ".".join(reactant_substrs) + "\t"
+    reaction_text += ".".join(product_substrs) + "\t"
 
     reaction_text += "\n"
 
