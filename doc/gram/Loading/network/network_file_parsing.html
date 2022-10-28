@@ -62,7 +62,7 @@
 </span><span id="L-6"><a href="#-6"><span class="linenos"> 6</span></a>    <span class="n">reaction_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </span><span id="L-7"><a href="#-7"><span class="linenos"> 7</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Network</span><span class="p">:</span>
 </span><span id="L-8"><a href="#-8"><span class="linenos"> 8</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-9"><a href="#-9"><span class="linenos"> 9</span></a><span class="sd">    Create a NorthNet Network from a list of reactions</span>
+</span><span id="L-9"><a href="#-9"><span class="linenos"> 9</span></a><span class="sd">    Create a Network from a list of reactions</span>
 </span><span id="L-10"><a href="#-10"><span class="linenos">10</span></a>
 </span><span id="L-11"><a href="#-11"><span class="linenos">11</span></a><span class="sd">    Parameters</span>
 </span><span id="L-12"><a href="#-12"><span class="linenos">12</span></a><span class="sd">    ----------</span>
@@ -72,7 +72,7 @@
 </span><span id="L-16"><a href="#-16"><span class="linenos">16</span></a>
 </span><span id="L-17"><a href="#-17"><span class="linenos">17</span></a><span class="sd">    Returns</span>
 </span><span id="L-18"><a href="#-18"><span class="linenos">18</span></a><span class="sd">    -------</span>
-</span><span id="L-19"><a href="#-19"><span class="linenos">19</span></a><span class="sd">    network: Classes.Network</span>
+</span><span id="L-19"><a href="#-19"><span class="linenos">19</span></a><span class="sd">    network: Network</span>
 </span><span id="L-20"><a href="#-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#-21"><span class="linenos">21</span></a>
 </span><span id="L-22"><a href="#-22"><span class="linenos">22</span></a>    <span class="n">rxns</span> <span class="o">=</span> <span class="p">[]</span>
@@ -101,7 +101,7 @@
 </span><span id="load_network_from_reaction_list-7"><a href="#-7"><span class="linenos"> 7</span></a>    <span class="n">reaction_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </span><span id="load_network_from_reaction_list-8"><a href="#-8"><span class="linenos"> 8</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Network</span><span class="p">:</span>
 </span><span id="load_network_from_reaction_list-9"><a href="#-9"><span class="linenos"> 9</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="load_network_from_reaction_list-10"><a href="#-10"><span class="linenos">10</span></a><span class="sd">    Create a NorthNet Network from a list of reactions</span>
+</span><span id="load_network_from_reaction_list-10"><a href="#-10"><span class="linenos">10</span></a><span class="sd">    Create a Network from a list of reactions</span>
 </span><span id="load_network_from_reaction_list-11"><a href="#-11"><span class="linenos">11</span></a>
 </span><span id="load_network_from_reaction_list-12"><a href="#-12"><span class="linenos">12</span></a><span class="sd">    Parameters</span>
 </span><span id="load_network_from_reaction_list-13"><a href="#-13"><span class="linenos">13</span></a><span class="sd">    ----------</span>
@@ -111,7 +111,7 @@
 </span><span id="load_network_from_reaction_list-17"><a href="#-17"><span class="linenos">17</span></a>
 </span><span id="load_network_from_reaction_list-18"><a href="#-18"><span class="linenos">18</span></a><span class="sd">    Returns</span>
 </span><span id="load_network_from_reaction_list-19"><a href="#-19"><span class="linenos">19</span></a><span class="sd">    -------</span>
-</span><span id="load_network_from_reaction_list-20"><a href="#-20"><span class="linenos">20</span></a><span class="sd">    network: Classes.Network</span>
+</span><span id="load_network_from_reaction_list-20"><a href="#-20"><span class="linenos">20</span></a><span class="sd">    network: Network</span>
 </span><span id="load_network_from_reaction_list-21"><a href="#-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="load_network_from_reaction_list-22"><a href="#-22"><span class="linenos">22</span></a>
 </span><span id="load_network_from_reaction_list-23"><a href="#-23"><span class="linenos">23</span></a>    <span class="n">rxns</span> <span class="o">=</span> <span class="p">[]</span>
@@ -124,7 +124,7 @@
 </span></pre></div>
 
 
-            <div class="docstring"><p>Create a NorthNet Network from a list of reactions</p>
+            <div class="docstring"><p>Create a Network from a list of reactions</p>
 
 <h6 id="parameters">Parameters</h6>
 
@@ -137,7 +137,7 @@ Format: e.g. C=O.OC=C(O)CO>&gt;O=C(<a href="CO">C@@H</a>O)CO</li>
 <h6 id="returns">Returns</h6>
 
 <ul>
-<li><strong>network</strong> (Classes.Network):</li>
+<li><strong>network</strong> (Network):</li>
 </ul>
 </div>
 

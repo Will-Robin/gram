@@ -57,23 +57,19 @@
 
                         <label class="view-source-button" for="reaction_smarts-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#-1"><span class="linenos"> 1</span></a><span class="kn">from</span> <span class="nn">rdkit.Chem</span> <span class="kn">import</span> <span class="n">AllChem</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#-1"><span class="linenos"> 1</span></a><span class="kn">from</span> <span class="nn">.core</span> <span class="kn">import</span> <span class="n">reaction_smarts</span> <span class="k">as</span> <span class="n">r_sm</span>
 </span><span id="L-2"><a href="#-2"><span class="linenos"> 2</span></a>
 </span><span id="L-3"><a href="#-3"><span class="linenos"> 3</span></a>
-</span><span id="L-4"><a href="#-4"><span class="linenos"> 4</span></a><span class="k">def</span> <span class="nf">reaction_from_smarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ChemicalReaction</span><span class="p">:</span>
+</span><span id="L-4"><a href="#-4"><span class="linenos"> 4</span></a><span class="k">def</span> <span class="nf">reaction_from_smarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">r_sm</span><span class="o">.</span><span class="n">ChemicalReaction</span><span class="p">:</span>
 </span><span id="L-5"><a href="#-5"><span class="linenos"> 5</span></a>    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
 </span><span id="L-6"><a href="#-6"><span class="linenos"> 6</span></a>
-</span><span id="L-7"><a href="#-7"><span class="linenos"> 7</span></a>    <span class="n">reaction</span><span class="p">:</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ChemicalReaction</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ReactionFromSmarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">)</span>
+</span><span id="L-7"><a href="#-7"><span class="linenos"> 7</span></a>    <span class="k">return</span> <span class="n">r_sm</span><span class="o">.</span><span class="n">reaction_from_smarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">)</span>
 </span><span id="L-8"><a href="#-8"><span class="linenos"> 8</span></a>
-</span><span id="L-9"><a href="#-9"><span class="linenos"> 9</span></a>    <span class="k">return</span> <span class="n">reaction</span>
-</span><span id="L-10"><a href="#-10"><span class="linenos">10</span></a>
-</span><span id="L-11"><a href="#-11"><span class="linenos">11</span></a>
-</span><span id="L-12"><a href="#-12"><span class="linenos">12</span></a><span class="k">def</span> <span class="nf">reaction_to_smarts</span><span class="p">(</span><span class="n">reaction</span><span class="p">:</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ChemicalReaction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="L-13"><a href="#-13"><span class="linenos">13</span></a>    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
-</span><span id="L-14"><a href="#-14"><span class="linenos">14</span></a>
-</span><span id="L-15"><a href="#-15"><span class="linenos">15</span></a>    <span class="n">smarts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ReactionToSmarts</span><span class="p">(</span><span class="n">reaction</span><span class="p">)</span>
-</span><span id="L-16"><a href="#-16"><span class="linenos">16</span></a>
-</span><span id="L-17"><a href="#-17"><span class="linenos">17</span></a>    <span class="k">return</span> <span class="n">smarts</span>
+</span><span id="L-9"><a href="#-9"><span class="linenos"> 9</span></a>
+</span><span id="L-10"><a href="#-10"><span class="linenos">10</span></a><span class="k">def</span> <span class="nf">reaction_to_smarts</span><span class="p">(</span><span class="n">reaction</span><span class="p">:</span> <span class="n">r_sm</span><span class="o">.</span><span class="n">ChemicalReaction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="L-11"><a href="#-11"><span class="linenos">11</span></a>    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+</span><span id="L-12"><a href="#-12"><span class="linenos">12</span></a>
+</span><span id="L-13"><a href="#-13"><span class="linenos">13</span></a>    <span class="k">return</span> <span class="n">r_sm</span><span class="o">.</span><span class="n">reaction_to_smarts</span><span class="p">(</span><span class="n">reaction</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -89,12 +85,10 @@
 
     </div>
     <a class="headerlink" href="#reaction_from_smarts"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="reaction_from_smarts-5"><a href="#-5"><span class="linenos"> 5</span></a><span class="k">def</span> <span class="nf">reaction_from_smarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ChemicalReaction</span><span class="p">:</span>
-</span><span id="reaction_from_smarts-6"><a href="#-6"><span class="linenos"> 6</span></a>    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
-</span><span id="reaction_from_smarts-7"><a href="#-7"><span class="linenos"> 7</span></a>
-</span><span id="reaction_from_smarts-8"><a href="#-8"><span class="linenos"> 8</span></a>    <span class="n">reaction</span><span class="p">:</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ChemicalReaction</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ReactionFromSmarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">)</span>
-</span><span id="reaction_from_smarts-9"><a href="#-9"><span class="linenos"> 9</span></a>
-</span><span id="reaction_from_smarts-10"><a href="#-10"><span class="linenos">10</span></a>    <span class="k">return</span> <span class="n">reaction</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="reaction_from_smarts-5"><a href="#-5"><span class="linenos">5</span></a><span class="k">def</span> <span class="nf">reaction_from_smarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">r_sm</span><span class="o">.</span><span class="n">ChemicalReaction</span><span class="p">:</span>
+</span><span id="reaction_from_smarts-6"><a href="#-6"><span class="linenos">6</span></a>    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+</span><span id="reaction_from_smarts-7"><a href="#-7"><span class="linenos">7</span></a>
+</span><span id="reaction_from_smarts-8"><a href="#-8"><span class="linenos">8</span></a>    <span class="k">return</span> <span class="n">r_sm</span><span class="o">.</span><span class="n">reaction_from_smarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -112,12 +106,10 @@
 
     </div>
     <a class="headerlink" href="#reaction_to_smarts"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="reaction_to_smarts-13"><a href="#-13"><span class="linenos">13</span></a><span class="k">def</span> <span class="nf">reaction_to_smarts</span><span class="p">(</span><span class="n">reaction</span><span class="p">:</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ChemicalReaction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="reaction_to_smarts-14"><a href="#-14"><span class="linenos">14</span></a>    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
-</span><span id="reaction_to_smarts-15"><a href="#-15"><span class="linenos">15</span></a>
-</span><span id="reaction_to_smarts-16"><a href="#-16"><span class="linenos">16</span></a>    <span class="n">smarts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ReactionToSmarts</span><span class="p">(</span><span class="n">reaction</span><span class="p">)</span>
-</span><span id="reaction_to_smarts-17"><a href="#-17"><span class="linenos">17</span></a>
-</span><span id="reaction_to_smarts-18"><a href="#-18"><span class="linenos">18</span></a>    <span class="k">return</span> <span class="n">smarts</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="reaction_to_smarts-11"><a href="#-11"><span class="linenos">11</span></a><span class="k">def</span> <span class="nf">reaction_to_smarts</span><span class="p">(</span><span class="n">reaction</span><span class="p">:</span> <span class="n">r_sm</span><span class="o">.</span><span class="n">ChemicalReaction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="reaction_to_smarts-12"><a href="#-12"><span class="linenos">12</span></a>    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+</span><span id="reaction_to_smarts-13"><a href="#-13"><span class="linenos">13</span></a>
+</span><span id="reaction_to_smarts-14"><a href="#-14"><span class="linenos">14</span></a>    <span class="k">return</span> <span class="n">r_sm</span><span class="o">.</span><span class="n">reaction_to_smarts</span><span class="p">(</span><span class="n">reaction</span><span class="p">)</span>
 </span></pre></div>
 
 

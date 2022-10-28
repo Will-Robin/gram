@@ -54,18 +54,13 @@
 
                         <label class="view-source-button" for="smiles-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#-1"><span class="linenos"> 1</span></a><span class="kn">from</span> <span class="nn">rdkit</span> <span class="kn">import</span> <span class="n">Chem</span>
-</span><span id="L-2"><a href="#-2"><span class="linenos"> 2</span></a><span class="kn">from</span> <span class="nn">rdkit.Chem.rdchem</span> <span class="kn">import</span> <span class="n">Mol</span> <span class="k">as</span> <span class="n">Mol</span>
-</span><span id="L-3"><a href="#-3"><span class="linenos"> 3</span></a>
-</span><span id="L-4"><a href="#-4"><span class="linenos"> 4</span></a>
-</span><span id="L-5"><a href="#-5"><span class="linenos"> 5</span></a><span class="k">def</span> <span class="nf">mol_from_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mol</span><span class="p">:</span>
-</span><span id="L-6"><a href="#-6"><span class="linenos"> 6</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-7"><a href="#-7"><span class="linenos"> 7</span></a><span class="sd">    Create</span>
-</span><span id="L-8"><a href="#-8"><span class="linenos"> 8</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-9"><a href="#-9"><span class="linenos"> 9</span></a>
-</span><span id="L-10"><a href="#-10"><span class="linenos">10</span></a>    <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
-</span><span id="L-11"><a href="#-11"><span class="linenos">11</span></a>
-</span><span id="L-12"><a href="#-12"><span class="linenos">12</span></a>    <span class="k">return</span> <span class="n">mol</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#-1"><span class="linenos">1</span></a><span class="kn">from</span> <span class="nn">.core</span> <span class="kn">import</span> <span class="n">smiles</span> <span class="k">as</span> <span class="n">core_sm</span>
+</span><span id="L-2"><a href="#-2"><span class="linenos">2</span></a>
+</span><span id="L-3"><a href="#-3"><span class="linenos">3</span></a>
+</span><span id="L-4"><a href="#-4"><span class="linenos">4</span></a><span class="k">def</span> <span class="nf">mol_from_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">core_sm</span><span class="o">.</span><span class="n">Mol</span><span class="p">:</span>
+</span><span id="L-5"><a href="#-5"><span class="linenos">5</span></a>    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+</span><span id="L-6"><a href="#-6"><span class="linenos">6</span></a>
+</span><span id="L-7"><a href="#-7"><span class="linenos">7</span></a>    <span class="k">return</span> <span class="n">core_sm</span><span class="o">.</span><span class="n">mol_from_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -81,20 +76,14 @@
 
     </div>
     <a class="headerlink" href="#mol_from_smiles"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="mol_from_smiles-6"><a href="#-6"><span class="linenos"> 6</span></a><span class="k">def</span> <span class="nf">mol_from_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mol</span><span class="p">:</span>
-</span><span id="mol_from_smiles-7"><a href="#-7"><span class="linenos"> 7</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="mol_from_smiles-8"><a href="#-8"><span class="linenos"> 8</span></a><span class="sd">    Create</span>
-</span><span id="mol_from_smiles-9"><a href="#-9"><span class="linenos"> 9</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="mol_from_smiles-10"><a href="#-10"><span class="linenos">10</span></a>
-</span><span id="mol_from_smiles-11"><a href="#-11"><span class="linenos">11</span></a>    <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
-</span><span id="mol_from_smiles-12"><a href="#-12"><span class="linenos">12</span></a>
-</span><span id="mol_from_smiles-13"><a href="#-13"><span class="linenos">13</span></a>    <span class="k">return</span> <span class="n">mol</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="mol_from_smiles-5"><a href="#-5"><span class="linenos">5</span></a><span class="k">def</span> <span class="nf">mol_from_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">core_sm</span><span class="o">.</span><span class="n">Mol</span><span class="p">:</span>
+</span><span id="mol_from_smiles-6"><a href="#-6"><span class="linenos">6</span></a>    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+</span><span id="mol_from_smiles-7"><a href="#-7"><span class="linenos">7</span></a>
+</span><span id="mol_from_smiles-8"><a href="#-8"><span class="linenos">8</span></a>    <span class="k">return</span> <span class="n">core_sm</span><span class="o">.</span><span class="n">mol_from_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Create</p>
-</div>
-
+    
 
                 </section>
     </main>
