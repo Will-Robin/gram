@@ -28,7 +28,7 @@ def load_reaction_templates_from_file(
     -------
     reaction_templates: dict
         Dictionary of reaction templates.
-        {reaction class name: NorthNet Reaction_Template}
+        {reaction class name: ReactionTemplate}
     """
 
     lines = []

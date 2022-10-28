@@ -6,7 +6,7 @@ def load_network_from_reaction_list(
     reaction_list: list[str], name: str = "", description: str = ""
 ) -> Network:
     """
-    Create a NorthNet Network from a list of reactions
+    Create a Network from a list of reactions
 
     Parameters
     ----------

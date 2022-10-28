@@ -9,7 +9,7 @@ def add_flow_terms(network: Network, inputs: list[str]) -> None:
 
     Parameters
     ----------
-    network: NorthNet.Classes.Network
+    network: Classes.Network
         Network to add flow terms to.
     inputs: list[str]
         List of input string tokens to add.

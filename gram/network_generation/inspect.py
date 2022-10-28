@@ -43,9 +43,9 @@ def check_reaction_occurence(
 
     Parameters
     ----------
-    compound: NorthNet.Classes.Compound
-    network: NorthNet.Classes.Network
-    reaction_template: NorthNet.Classes.ReactionTemplate
+    compound: Classes.Compound
+    network: Classes.Network
+    reaction_template: Classes.ReactionTemplate
 
     Returns
     -------
@@ -53,10 +53,12 @@ def check_reaction_occurence(
         Whether reaction type has been applied to the compound or not.
     """
 
+    # Reaction to check for
     reaction_name = reaction_template.name
 
+    # Get the tokens of reactions in which the compound is a reactant
     used_reactions = compound.reactant_in
+    # Get the names of the reaction templates for each reaction
     used_classes = [network.get_reaction_name(r) for r in used_reactions]
-    reaction_performed = reaction_name in used_classes
 
-    return reaction_performed
+    return reaction_name in used_classes
