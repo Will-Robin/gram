@@ -13,13 +13,13 @@ def has_substructure_match(compound: Compound, substructure: Substructure) -> bo
     return result
 
 
-def get_substructure_matches(compound: Compound, substructure: Substructure) -> tuple[tuple[int]]:
+def get_substructure_matches(
+    compound: Compound, substructure: Substructure
+) -> tuple[tuple[int]]:
     """
     Get substructure matches for a Compound.
     """
 
     matches = substr.get_substructure_matches(compound.mol, substructure.mol)
-
-
 
     return matches

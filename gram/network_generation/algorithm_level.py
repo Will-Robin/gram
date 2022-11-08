@@ -49,9 +49,7 @@ def apply_specific_reaction_to_network(
             pass
 
 
-def apply_reaction_to_network(
-    network: Network, reaction_rule: ReactionRule
-) -> None:
+def apply_reaction_to_network(network: Network, reaction_rule: ReactionRule) -> None:
     """
     Extend the network using any members of the network which can interact
     according to the reaction rule provided.

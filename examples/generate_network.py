@@ -4,6 +4,7 @@ from gram.Classes import Network
 from gram.Classes import Compound
 from gram.Classes import Substructure
 from gram.Classes import ReactionRule
+
 from gram import network_generation as n_gen
 from gram.chemoinformatics import substructure_match as substr
 
@@ -51,7 +52,7 @@ def generate_epimers(
         reaction_number = new_reaction_number
 
 
-# Load in some variables
+# Load in variables
 with open("params.yaml", "r") as file:
     text = file.read()
 
@@ -114,32 +115,3 @@ compound_number = len(reaction_network.compounds)
 reaction_number = len(reaction_network.reactions)
 
 print(f"Generated {compound_number} compounds and {reaction_number} reactions.")
-
-# save the reactions and their reaction rules
-header = [
-    "ReactionSMILES",
-    "reaction name",
-    "reactionSMARTS",
-    "reacting substructures",
-    "product substructures",
-]
-
-reaction_text = "\t".join(header) + "\n"
-for reaction in reaction_network.reactions:
-    rxn = reaction_network.reactions[reaction]
-    rule = rxn.reaction_rule
-    reaction_text += reaction + "\t"
-    reaction_text += rule.name + "\t"
-
-    reaction_text += rule.reaction_smarts + "\t"
-    reactant_substrs = [r.smarts for r in rule.reactant_substructures]
-    product_substrs = [p.smarts for p in rule.product_substructures]
-    reaction_text += ".".join(reactant_substrs) + "\t"
-    reaction_text += ".".join(product_substrs) + "\t"
-
-    reaction_text += "\n"
-
-
-filename = "reactions_and_rules.tsv"
-with open(filename, "w") as file:
-    file.write(reaction_text)
