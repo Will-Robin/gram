@@ -8,6 +8,18 @@ from .core import run_reaction as core_run
 def run_reaction(
     reactant_compounds: list[Compound], reaction_rule: ReactionRule
 ) -> list[Reaction]:
+    """
+    Run a chemical reaction process.
+
+    Parameters
+    ----------
+    reactant_compounds: list[Compound]
+    reaction_rule: ReactionRule
+
+    Returns
+    -------
+    output: list[Reaction]
+    """
 
     reactants: list[core_run.Mol] = [r.mol for r in reactant_compounds]
 

@@ -6,8 +6,6 @@ def cleanup(reactions: list[str]) -> list[str]:
     Used to clear up the output of rdkit reaction function, parsing multiple
     reaction outcomes. Not perfect.
 
-    TODO: remove parts, and refactor
-
     Parameters
     ----------
     reactions: list[str]

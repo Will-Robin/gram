@@ -4,7 +4,17 @@ from rdkit.Chem.rdchem import Mol
 
 
 def mol_from_smiles(smiles: str) -> Mol:
-    """ """
+    """
+    Create a molecule object from a SMILES string.
+
+    Parameters
+    ----------
+    smiles: str
+
+    Return
+    ------
+    mol: Mol
+    """
 
     mol = Chem.MolFromSmiles(smiles)
 

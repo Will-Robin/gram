@@ -42,7 +42,17 @@ def reaction_from_smiles(reaction_smiles: str) -> ChemicalReaction:
 
 
 def reaction_to_smiles(reaction: ChemicalReaction) -> str:
-    """ """
+    """
+    Convert a ChemicalReaction to a reaction SMILES string.
+
+    Parameters
+    ----------
+    reaction: ChemicalReaction
+
+    Returns
+    -------
+    reaction_smiles: str
+    """
 
     reaction_smiles: str = AllChem.ReactionToSmiles(reaction)
 

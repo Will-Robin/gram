@@ -22,13 +22,25 @@ def reaction_from_smiles(reaction_smiles: str) -> r_sm.ChemicalReaction:
 
 
 def reaction_to_smiles(reaction: r_sm.ChemicalReaction) -> str:
-    """ """
+    """
+    Convert a ChemicalReaction to a reaction SMILES string.
+
+    Parameters
+    ----------
+    reaction: r_sm.ChemicalReaction
+
+    Returns
+    -------
+    str
+    """
 
     return r_sm.reaction_to_smiles(reaction)
 
 
 def split_reaction_smiles(reaction_smiles: str) -> tuple[list[str], list[str]]:
     """
+    Split a reaction SMILES string into its components.
+
     Parameters
     ----------
     reaction_smiles: str
