@@ -1,5 +1,5 @@
 from gram.chemoinformatics import reaction_smarts
-from ._substructure import Substructure
+from .substructure import Substructure
 
 
 class ReactionRule:

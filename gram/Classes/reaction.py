@@ -2,7 +2,7 @@ from gram.chemoinformatics.reaction_smiles import reaction_from_smiles
 from gram.chemoinformatics.reaction_smiles import split_reaction_smiles
 from gram.chemoinformatics.reaction_smiles import canonicalise_reaction_smiles
 
-from ._reactionRule import ReactionRule
+from .reaction_rule import ReactionRule
 
 
 class Reaction:

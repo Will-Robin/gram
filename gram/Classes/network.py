@@ -1,9 +1,9 @@
-from ._input import Input
-from ._output import Output
-from ._reaction import Reaction
-from ._compound import Compound
-from ._inputProcess import InputProcess
-from ._outputProcess import OutputProcess
+from .input import Input
+from .output import Output
+from .reaction import Reaction
+from .compound import Compound
+from .input_process import InputProcess
+from .output_process import OutputProcess
 
 
 class Network:
