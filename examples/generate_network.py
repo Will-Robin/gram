@@ -1,4 +1,14 @@
+"""
+An example which generates the formose reaction network similar to that used in
+Robinson, Daines, van Duppen, de Jong, Huck, *Nature Chemistry*, 2022, **14**,
+623-631. DOI: 10.1038/s41557-022-00956-7
+
+This script demonstrates a lot of the functionality in `gram`, from loading
+reaction rules from text, to creating an applying transformations to a reaction
+network.
+"""
 import yaml
+from pathlib import Path
 
 from gram.Classes import Network
 from gram.Classes import Compound
@@ -53,63 +63,52 @@ def generate_epimers(
 
 
 # Load in variables
-with open("params.yaml", "r") as file:
-    text = file.read()
+info = yaml.load(Path("params.yaml").read_text(), Loader=yaml.FullLoader)
 
-info = yaml.load(text, Loader=yaml.FullLoader)
+# Create ReactionRule objects from reaction SMARTS strings.
+reactions = load_reaction_rules(info["reaction-smarts-file"])
 
-"""Get reaction components"""
-reaction_SMARTS_file = info["reaction-smarts-file"]
-
-reactions = load_reaction_rules(reaction_SMARTS_file)
-
+# A function for counting carbons.
 C_patt = Substructure("[C]")
 count_carbons = lambda x: substr.get_substructure_matches(x, C_patt)
 
-"""Name"""
+# Information for reaction network generation
 network_name = info["network-name"]
 description = info["network-description"]
-
-"""Boundary conditions"""
-# iterations  overshoot for C6, but do so to get
-# all reaction paths and compounds possible up
-# to C6 compounds
 iterations = info["iterations"]
-start_smiles = info["initiator-smiles"]
+initiator_smiles = info["initiator-smiles"]
 
-initiator_species = [Compound(x) for x in start_smiles]
+# Initialise reaction network
 reaction_network = Network([], network_name, description)
-
+initiator_species = [Compound(x) for x in initiator_smiles]
 reaction_network.add_compounds(initiator_species)
 
-"""Reactivity constructor"""
+# Reaction templates to use (by name)
 reaction_pattern = info["reaction-rules"]
 deprotonation_rules = [x for x in reaction_pattern if "deprotonation" in x]
 protonation_rules = [x for x in reaction_pattern if "protonation" in x]
 
-"""Expansion operation"""
-x = 0
-while x < iterations:
-    for task in reaction_pattern:
-        n_gen.apply_reaction_to_network(reaction_network, reactions[task])
+# Expansion operation
+for _ in range(iterations):
+
+    # Apply reaction rules to compatible compounds in the network.
+    for reaction_type in reaction_pattern:
+        n_gen.apply_reaction_to_network(reaction_network, reactions[reaction_type])
+
+    # Migrate carbonyls
     generate_epimers(
         reaction_network,
         deprotonation_rules=[reactions[d] for d in deprotonation_rules],
         protonation_rules=[reactions[p] for p in protonation_rules],
     )
 
-    """Removing compounds > C6"""
-    # In effect, this is equivalent to setting all chain-growing reaction
-    # rules to not occur for C6 compounds
-    # i.e. [$(C(O)=CO)!$(C(O)=C(O)C(O)C(O)C(O)CO)], etc.
+    # Removal of compounds > C6
     remove_compounds = [
         reaction_network.compounds[c]
         for c in reaction_network.compounds
         if len(count_carbons(reaction_network.compounds[c])) > 6
     ]
     reaction_network.remove_compounds(remove_compounds)
-
-    x += 1
 
 compound_number = len(reaction_network.compounds)
 reaction_number = len(reaction_network.reactions)
