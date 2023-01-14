@@ -2,7 +2,6 @@
 Calls to core chemoinformatics libraries.
 """
 
-from .rdkit import cleanup
 from .rdkit import smarts
 from .rdkit import smiles
 from .rdkit import run_reaction
