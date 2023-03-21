@@ -28,7 +28,7 @@ class Substructure:
         self.mol: smarts.Mol = smarts.mol_from_smarts(SMARTS)
 
         self.smarts: str = SMARTS
-        if smarts.mol_to_smarts(self.mol) is not None:
+        if self.mol is not None:
             self.smarts = smarts.mol_to_smarts(self.mol)
 
         self.matching_compounds: list[str] = []
