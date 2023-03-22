@@ -13,7 +13,10 @@ from .inspect import check_reaction_input
 
 
 def apply_specific_reaction_to_network(
-    network: Network, reagents: list[Compound], reaction_rule: ReactionRule
+    network: Network,
+    reagents: list[Compound],
+    reaction_rule: ReactionRule,
+    sanitize: bool = True,
 ) -> None:
     """
     Extend the network using a single reagent set and reaction rule.
@@ -43,13 +46,17 @@ def apply_specific_reaction_to_network(
         input_valid = check_reaction_input(insert, rxn_substructs)
 
         if input_valid:
-            resulting_reactions = run_reaction(insert, reaction_rule)
+            resulting_reactions = run_reaction(insert, reaction_rule, sanitize=sanitize)
             network.add_reactions(resulting_reactions)
         else:
             pass
 
 
-def apply_reaction_to_network(network: Network, reaction_rule: ReactionRule) -> None:
+def apply_reaction_to_network(
+    network: Network,
+    reaction_rule: ReactionRule,
+    sanitize: bool = True,
+) -> None:
     """
     Extend the network using any members of the network which can interact
     according to the reaction rule provided.
@@ -79,5 +86,5 @@ def apply_reaction_to_network(network: Network, reaction_rule: ReactionRule) -> 
     # Build reactant combinations
     inputs = [list(prod) for prod in itertools.product(*reactants)]
     for inp in inputs:
-        resulting_reactions = run_reaction(inp, reaction_rule)
+        resulting_reactions = run_reaction(inp, reaction_rule, sanitize=sanitize)
         network.add_reactions(resulting_reactions)

@@ -6,7 +6,9 @@ from .smiles import incorrect_chiral_H_solve
 
 
 def run_rdkit_reaction(
-    reactant_compounds: list[Mol], reaction_rule: AllChem.ChemicalReaction
+    reactant_compounds: list[Mol],
+    reaction_rule: AllChem.ChemicalReaction,
+    sanitize: bool = True,
 ) -> list[str]:
     """
     Performs a chemical reaction.
@@ -40,7 +42,8 @@ def run_rdkit_reaction(
             # The products are checked for chiral information which has been
             # transferred to achiral carbons, which is removed.
             product = incorrect_chiral_H_solve(product)
-            Chem.SanitizeMol(product)
+            if sanitize:
+                Chem.SanitizeMol(product)
 
         rxn = AllChem.ChemicalReaction()  # Create an empty chemical reaction
         [rxn.AddReactantTemplate(r) for r in reactant_compounds]
