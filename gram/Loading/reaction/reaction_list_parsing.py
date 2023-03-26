@@ -8,12 +8,15 @@ def load_reaction_rules_from_file(
     fname: str, delimiter: str = "\t"
 ) -> dict[str, ReactionRule]:
     """
-    Reads reaction rules from a .csv file.
+    Reads reaction rules from a file.
 
-    Assumed that the file is structure as follows:
+    It is assumed that the file is structure as follows:
+
+    ```
     header\n
-    name\treactant SMARTS\tproduct SMARTS\tReaction SMARTS
+    name{delimiter}reactant SMARTS{delimiter}product SMARTS{delimiter}Reaction SMARTS\n
     etc.
+    ```
 
     (ignores anything beyond 4th column)
 
