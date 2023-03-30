@@ -19,5 +19,5 @@ class Output:
             List of Reaction Output processes connected to the output.
         """
 
-        self.token = output
+        self.token: str = output
         self.product_of: list[str] = []

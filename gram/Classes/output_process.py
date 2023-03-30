@@ -24,10 +24,10 @@ class OutputProcess:
             List of processes connected to the output.
         """
 
-        self.token = reaction_output_string
+        self.token: str = reaction_output_string
 
         token_sides = reaction_output_string.split(">>")
-        self.output_id = token_sides[1]
-        self.output_compound = token_sides[0]
+        self.output_id: str = token_sides[1]
+        self.output_compound: str = token_sides[0]
 
         self.product_of: list[str] = []
