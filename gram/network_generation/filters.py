@@ -34,9 +34,10 @@ def get_reactive_compounds(
     matches = []
     # testing each molecule in the list of species for reaction group matches
     for mol in species_list:
-        for substructure in substructures:
-            if substr.has_substructure_match(mol, substructure):
-                matches.append(mol)
+        if mol.mol is not None:
+            for substructure in substructures:
+                if substr.has_substructure_match(mol, substructure):
+                    matches.append(mol)
     return matches
 
 
