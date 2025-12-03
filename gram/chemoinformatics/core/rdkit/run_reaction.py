@@ -54,7 +54,7 @@ def run_rdkit_reaction(
 
         rxn = AllChem.ChemicalReaction()  # Create an empty chemical reaction
         [rxn.AddReactantTemplate(r) for r in reactant_compounds]
-        [rxn.AddProductTemplate(p) for p in product_set]
+        [rxn.AddProductTemplate(p) for p in valid_products]
 
         reaction_SMILES = AllChem.ReactionToSmiles(rxn, canonical=True)
 
