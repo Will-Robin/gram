@@ -61,7 +61,7 @@ class RuleNetwork:
         if len(rules) == 0:
             pass
         else:
-            self.add_rules(rules)
+            self.add_reaction_rules(rules)
 
     def add_compound(self, compound: Compound):
         """
