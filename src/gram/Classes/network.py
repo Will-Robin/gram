@@ -230,7 +230,6 @@ class Network:
         """
 
         for reaction in remove_reactions:
-
             for reactant in set(self.reactions[reaction].reactants):
                 self.compounds[reactant].reactant_in.remove(reaction)
             for product in set(self.reactions[reaction].products):
@@ -300,7 +299,6 @@ class Network:
         """
 
         if output.output_compound in self.compounds:
-
             self.output_processes[output.token] = output
 
             self.compounds[output.output_compound].reactant_in.append(output.token)

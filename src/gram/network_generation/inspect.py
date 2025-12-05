@@ -1,6 +1,7 @@
 """
 These functions check if criteria are met for a reaction.
 """
+
 from gram.Classes import Network
 from gram.Classes import Compound
 from gram.Classes import Substructure

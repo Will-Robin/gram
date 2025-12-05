@@ -1,7 +1,6 @@
 """
 Filters are used to determine if a reaction process can occur.
 """
-from itertools import compress
 
 from gram.Classes import Network
 from gram.Classes import Reaction
@@ -65,7 +64,6 @@ def find_invalid_reactions(
     invalid_reactions = []
 
     for reaction in reactions:
-
         products = [network.compounds[x] for x in reaction.products]
 
         for product in products:

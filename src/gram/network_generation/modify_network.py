@@ -1,6 +1,7 @@
 """
 These functions modify reaction networks.
 """
+
 from gram.Classes import Network
 from gram.Classes import InputProcess
 from gram.Classes import OutputProcess

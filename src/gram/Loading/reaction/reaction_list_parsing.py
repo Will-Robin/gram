@@ -1,6 +1,7 @@
 """
 For loading reaction information fron text files.
 """
+
 from gram.Classes import ReactionRule
 
 

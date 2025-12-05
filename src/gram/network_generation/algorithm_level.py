@@ -1,6 +1,7 @@
 """
 Algorithms for generating reaction networks by applying reaction rules to them.
 """
+
 import itertools
 
 from gram.Classes import Network

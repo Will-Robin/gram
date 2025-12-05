@@ -1,6 +1,7 @@
 """
 For loading compound objects from a text file.
 """
+
 from gram.Classes import Compound
 
 

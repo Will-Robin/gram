@@ -1,6 +1,6 @@
 from gram.Classes import Compound
 from gram.Classes import Substructure
-from .core import substructure_match as substr
+from .core import substructure_match
 
 
 def has_substructure_match(compound: Compound, substructure: Substructure) -> bool:
@@ -17,7 +17,7 @@ def has_substructure_match(compound: Compound, substructure: Substructure) -> bo
     bool
     """
 
-    result = substr.has_substructure_match(compound.mol, substructure.mol)
+    result = substructure_match.has_substructure_match(compound.mol, substructure.mol)
 
     return result
 
@@ -38,6 +38,8 @@ def get_substructure_matches(
     tuple[tuple[int]]
     """
 
-    matches = substr.get_substructure_matches(compound.mol, substructure.mol)
+    matches = substructure_match.get_substructure_matches(
+        compound.mol, substructure.mol
+    )
 
     return matches
