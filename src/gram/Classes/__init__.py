@@ -11,3 +11,17 @@ from .output_process import OutputProcess
 from .reaction import Reaction
 from .reaction_rule import ReactionRule
 from .substructure import Substructure
+from .rule_network import RuleNetwork
+
+__all__ = [
+    "Network",
+    "Compound",
+    "Input",
+    "InputProcess",
+    "Output",
+    "OutputProcess",
+    "Reaction",
+    "ReactionRule",
+    "Substructure",
+    "RuleNetwork",
+]

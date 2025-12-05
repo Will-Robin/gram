@@ -7,6 +7,7 @@ This script demonstrates a lot of the functionality in `gram`, from loading
 reaction rules from text, to creating an applying transformations to a reaction
 network.
 """
+
 import yaml
 from pathlib import Path
 
@@ -14,6 +15,7 @@ from gram.Classes import Network
 from gram.Classes import Compound
 from gram.Classes import Substructure
 from gram.Classes import ReactionRule
+from gram.Classes import RuleNetwork
 
 from gram import network_generation as n_gen
 from gram.chemoinformatics import substructure_match as substr
@@ -90,7 +92,6 @@ protonation_rules = [x for x in reaction_pattern if "protonation" in x]
 
 # Expansion operation
 for _ in range(iterations):
-
     # Apply reaction rules to compatible compounds in the network.
     for reaction_type in reaction_pattern:
         n_gen.apply_reaction_to_network(reaction_network, reactions[reaction_type])
@@ -109,6 +110,11 @@ for _ in range(iterations):
         if len(count_carbons(reaction_network.compounds[c])) > 6
     ]
     reaction_network.remove_compounds(remove_compounds)
+
+# Create a rule network
+rule_network = RuleNetwork([], "", "")
+for r in reaction_network.reactions:
+    rule_network.add_reaction(reaction_network.reactions[r])
 
 compound_number = len(reaction_network.compounds)
 reaction_number = len(reaction_network.reactions)
